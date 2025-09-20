@@ -1,0 +1,23 @@
+site_name: Promptly API Docs
+site_url: https://bicep.github.io/promptly-api-docs
+theme:
+  name: material
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - API Reference:
+      - Text Generation: reference/text-generation.md
+      - Image Generation: reference/image-generation.md
+      - Speech Generation: reference/speech-generation.md
+      - Subscriptions: reference/subscriptions.md
+  - Usage Tracking: usage-tracking.md
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+plugins:
+  - search
