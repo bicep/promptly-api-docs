@@ -465,9 +465,20 @@
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span><span class="s2">"https://api.promptly.ai/v1/subscriptions/sub-001"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer YOUR_API_KEY"</span>
 </code></pre></div>
-<blockquote>
-<p>See <a href="../diagrams/subscription-flow.mmd">Subscription Flow Diagram</a> for a visual of how subscription actions propagate through the system.</p>
-</blockquote>
+<h3 id="usage-flow-diagram">Usage Flow Diagram<a class="headerlink" href="#usage-flow-diagram" title="Permanent link">¶</a></h3>
+<p>The following sequence diagram illustrates how usage tracking and subscription updates propagate through the system:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as User
+    participant A as Promptly API
+    participant B as Billing Service
+    participant D as Data Storage
+
+    U-&gt;&gt;A: Create / Update / Cancel Subscription
+    A-&gt;&gt;B: Process Payment / Refund
+    B--&gt;&gt;A: Payment Status
+    A-&gt;&gt;D: Update Subscription Record
+    D--&gt;&gt;A: Confirmation
+    A--&gt;&gt;U: Subscription Status Updated</code></pre>
 <hr/>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">¶</a></h2>
 <ul>

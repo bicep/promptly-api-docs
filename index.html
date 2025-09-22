@@ -368,15 +368,37 @@ Promptly is a generative AI SaaS platform that helps developers integrate advanc
 </ul>
 <h2 id="api-architecture">API Architecture<a class="headerlink" href="#api-architecture" title="Permanent link">¶</a></h2>
 <p>For a high-level overview of how Promptly processes requests, see the architecture diagram:</p>
-<pre class="mermaid"><code>graph TD
-A[Client App] --&gt; B[Promptly API Gateway]
-B --&gt; C[Text Generation Service]
-B --&gt; D[Image Generation Service]
-B --&gt; E[Speech Generation Service]
-C --&gt; F[Database]
-D --&gt; F[Database]
-E --&gt; F[Database]</code></pre>
-<pre class="mermaid"><code>!include diagrams/api-architecture.mmd</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Client
+        A[User / App]
+    end
+
+    subgraph Promptly API
+        B[Text Generation]
+        C[Image Generation]
+        D[Speech Generation]
+        E[Usage Tracking &amp; Subscription Management]
+    end
+
+    subgraph Backend Services
+        F[Authentication Service]
+        G[Billing Service]
+        H[Data Storage]
+    end
+
+    A --&gt;|API Requests| F
+    F --&gt;|Validate API Key| B
+    F --&gt;|Validate API Key| C
+    F --&gt;|Validate API Key| D
+    B --&gt; H
+    C --&gt; H
+    D --&gt; H
+    B --&gt; A
+    C --&gt; A
+    D --&gt; A
+    A --&gt;|Check usage / subscription| E
+    E --&gt; G
+    E --&gt; H</code></pre>
 <h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">¶</a></h2>
 <p>All requests require an API key.<br/>
 You can create and manage keys from your <a href="https://dashboard.promptly.ai">Promptly Dashboard</a>.</p>
@@ -392,7 +414,15 @@ You can create and manage keys from your <a href="https://dashboard.promptly.ai"
 </code></pre></div>
 <h3 id="authentication-flow">Authentication Flow<a class="headerlink" href="#authentication-flow" title="Permanent link">¶</a></h3>
 <p>For a visual of how API key validation works:</p>
-<p>{! diagrams/auth-flow.mmd !}</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as User
+    participant A as Promptly API
+    participant S as Auth Server
+
+    U-&gt;&gt;A: Send API Key
+    A-&gt;&gt;S: Validate API Key
+    S--&gt;&gt;A: Validation Result (200 OK / 401 Unauthorized)
+    A--&gt;&gt;U: Response</code></pre>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
 <ol>
 <li>Start with the <a href="quickstart/">Quickstart Guide</a> to make your first API call.  </li>
