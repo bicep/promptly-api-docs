@@ -1,0 +1,31 @@
+flowchart TD
+    subgraph Client
+        A[User / App]
+    end
+
+    subgraph Promptly API
+        B[Text Generation]
+        C[Image Generation]
+        D[Speech Generation]
+        E[Usage Tracking & Subscription Management]
+    end
+
+    subgraph Backend Services
+        F[Authentication Service]
+        G[Billing Service]
+        H[Data Storage]
+    end
+
+    A -->|API Requests| F
+    F -->|Validate API Key| B
+    F -->|Validate API Key| C
+    F -->|Validate API Key| D
+    B --> H
+    C --> H
+    D --> H
+    B --> A
+    C --> A
+    D --> A
+    A -->|Check usage / subscription| E
+    E --> G
+    E --> H

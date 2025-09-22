@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/quickstart/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/usage-tracking/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/reference/image-generation/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/reference/speech-generation/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/reference/subscriptions/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
     <url>
          <loc>https://bicep.github.io/promptly-api-docs/reference/text-generation/</loc>
-         <lastmod>2025-09-20</lastmod>
+         <lastmod>2025-09-22</lastmod>
     </url>
 </urlset>

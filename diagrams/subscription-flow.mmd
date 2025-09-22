@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant U as User
+    participant A as Promptly API
+    participant B as Billing Service
+    participant D as Data Storage
+
+    U->>A: Create / Update / Cancel Subscription
+    A->>B: Process Payment / Refund
+    B-->>A: Payment Status
+    A->>D: Update Subscription Record
+    D-->>A: Confirmation
+    A-->>U: Subscription Status Updated
