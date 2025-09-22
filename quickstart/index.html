@@ -179,14 +179,14 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#step-1-install-dependencies">
 <span class="md-ellipsis">
-      Step 1: Install dependencies
+      Step 1: Install Dependencies
     </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#step-2-create-an-account-and-get-your-api-key">
 <span class="md-ellipsis">
-      Step 2: Create an account and get your API key
+      Step 2: Create an Account and Get Your API Key
     </span>
 </a>
 </li>
@@ -196,6 +196,17 @@
       Step 3: Generate Text
     </span>
 </a>
+<nav aria-label="Step 3: Generate Text" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-response">
+<span class="md-ellipsis">
+      Example Response
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -275,14 +286,14 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#step-1-install-dependencies">
 <span class="md-ellipsis">
-      Step 1: Install dependencies
+      Step 1: Install Dependencies
     </span>
 </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#step-2-create-an-account-and-get-your-api-key">
 <span class="md-ellipsis">
-      Step 2: Create an account and get your API key
+      Step 2: Create an Account and Get Your API Key
     </span>
 </a>
 </li>
@@ -292,6 +303,17 @@
       Step 3: Generate Text
     </span>
 </a>
+<nav aria-label="Step 3: Generate Text" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-response">
+<span class="md-ellipsis">
+      Example Response
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -301,21 +323,53 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="quick-start-guide">Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permanent link">¶</a></h1>
-<h2 id="step-1-install-dependencies">Step 1: Install dependencies<a class="headerlink" href="#step-1-install-dependencies" title="Permanent link">¶</a></h2>
-<h2 id="step-2-create-an-account-and-get-your-api-key">Step 2: Create an account and get your API key<a class="headerlink" href="#step-2-create-an-account-and-get-your-api-key" title="Permanent link">¶</a></h2>
-<p>Sign up at <a href="https://promptly.ai/signup">https://promptly.ai/signup</a></p>
+<p>Get up and running with the Promptly API in just a few steps.</p>
+<hr/>
+<h2 id="step-1-install-dependencies">Step 1: Install Dependencies<a class="headerlink" href="#step-1-install-dependencies" title="Permanent link">¶</a></h2>
+<p>Make sure you have Python 3.7+ installed, then install <code>requests</code>:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>requests
+</code></pre></div>
+<blockquote>
+<p>Tip: You can also use curl or any HTTP client if you prefer not to use Python.</p>
+</blockquote>
+<h2 id="step-2-create-an-account-and-get-your-api-key">Step 2: Create an Account and Get Your API Key<a class="headerlink" href="#step-2-create-an-account-and-get-your-api-key" title="Permanent link">¶</a></h2>
+<p>Sign up at https://promptly.ai/signup</p>
+<blockquote>
+<p>Keep your API key secure! Never commit it to public repositories.</p>
+</blockquote>
 <h2 id="step-3-generate-text">Step 3: Generate Text<a class="headerlink" href="#step-3-generate-text" title="Permanent link">¶</a></h2>
-<p>```python
-import requests
+<p>Use the /v1/generate/text endpoint to gen</p>
+<div class="highlight"><pre><span></span><code>import requests
+
+# Endpoint and headers
 url = "https://api.promptly.ai/v1/generate/text"
-headers = {"Authorization": "Bearer YOUR_API_KEY"}
-data = {"model":"promptly-gpt-3","prompt":"Write a haiku about AI","max_tokens":50}</p>
-<p>resp = requests.post(url, headers=headers, json=data)
-print(resp.json())</p>
-<p>url = "https://api.promptly.ai/v1/generate/image"
-data = {"model":"promptly-dalle", "prompt":"Futuristic city skyline", "size":"1024x1024"}
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+# Request payload
+data = {
+    "model": "promptly-gpt-3",
+    "prompt": "Write a haiku about AI",
+    "max_tokens": 50
+}
+
+# Send request
 resp = requests.post(url, headers=headers, json=data)
-print(resp.json())</p>
+print(resp.json())
+</code></pre></div>
+<h4 id="example-response">Example Response<a class="headerlink" href="#example-response" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code>{
+  "id": "txt-001",
+  "text": "Machines learn and grow,\nSilent algorithms hum,\nWisdom blooms in code."
+}
+</code></pre></div>
+<blockquote>
+<p>Tip: Adjust max_tokens to control the length of the generated text.</p>
+</blockquote>
+<p>Great! You've successfully generated your first piece of text. 🎉  </p>
+<p>To explore other capabilities, check out the <a href="../reference/image-generation/">Image Generation</a> and <a href="../reference/speech-generation/">Speech Generation</a> sections.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
