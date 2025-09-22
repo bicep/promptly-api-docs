@@ -21,18 +21,37 @@ For a high-level overview of how Promptly processes requests, see the architectu
 
 
 ```mermaid
-graph TD
-A[Client App] --> B[Promptly API Gateway]
-B --> C[Text Generation Service]
-B --> D[Image Generation Service]
-B --> E[Speech Generation Service]
-C --> F[Database]
-D --> F[Database]
-E --> F[Database]
-```
+flowchart TD
+    subgraph Client
+        A[User / App]
+    end
 
-```mermaid
-!include diagrams/api-architecture.mmd
+    subgraph Promptly API
+        B[Text Generation]
+        C[Image Generation]
+        D[Speech Generation]
+        E[Usage Tracking & Subscription Management]
+    end
+
+    subgraph Backend Services
+        F[Authentication Service]
+        G[Billing Service]
+        H[Data Storage]
+    end
+
+    A -->|API Requests| F
+    F -->|Validate API Key| B
+    F -->|Validate API Key| C
+    F -->|Validate API Key| D
+    B --> H
+    C --> H
+    D --> H
+    B --> A
+    C --> A
+    D --> A
+    A -->|Check usage / subscription| E
+    E --> G
+    E --> H
 ```
 
 ## Authentication
@@ -58,7 +77,17 @@ curl -X POST "https://api.promptly.ai/v1/text/generate" \
 
 For a visual of how API key validation works:
 
-{! diagrams/auth-flow.mmd !}
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as Promptly API
+    participant S as Auth Server
+
+    U->>A: Send API Key
+    A->>S: Validate API Key
+    S-->>A: Validation Result (200 OK / 401 Unauthorized)
+    A-->>U: Response
+```
 
 ## Next Steps
 

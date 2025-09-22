@@ -90,7 +90,24 @@ curl -X DELETE "https://api.promptly.ai/v1/subscriptions/sub-001" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-> See [Subscription Flow Diagram](diagrams/subscription-flow.mmd) for a visual of how subscription actions propagate through the system.
+### Usage Flow Diagram
+
+The following sequence diagram illustrates how usage tracking and subscription updates propagate through the system:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as Promptly API
+    participant B as Billing Service
+    participant D as Data Storage
+
+    U->>A: Create / Update / Cancel Subscription
+    A->>B: Process Payment / Refund
+    B-->>A: Payment Status
+    A->>D: Update Subscription Record
+    D-->>A: Confirmation
+    A-->>U: Subscription Status Updated
+```
 
 ---
 
