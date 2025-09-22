@@ -50,7 +50,7 @@ curl -X GET "https://api.promptly.ai/v1/usage" \
 | Image Generation    | 10             | 100        |
 | Speech Generation   | 20             | 200        |
 
-> For visual reference of how usage tracking works, see the [API Architecture Diagram](diagrams/api-architecture.mmd).
+> For visual reference of how usage tracking works, see the [API Architecture Diagram](index.md#api-architecture).
 
 ---
 
