@@ -15,14 +15,34 @@ Promptly is a generative AI SaaS platform that helps developers integrate advanc
 - [Usage Tracking](usage-tracking.md)
 - [Subscription Management](reference/subscriptions.md)
 
+## API Architecture
+
+For a high-level overview of how Promptly processes requests, see the architecture diagram:
+
+
+```mermaid
+graph TD
+A[Client App] --> B[Promptly API Gateway]
+B --> C[Text Generation Service]
+B --> D[Image Generation Service]
+B --> E[Speech Generation Service]
+C --> F[Database]
+D --> F[Database]
+E --> F[Database]
+```
+
+```mermaid
+!include diagrams/api-architecture.mmd
+```
+
 ## Authentication
+
 All requests require an API key.  
 You can create and manage keys from your [Promptly Dashboard](https://dashboard.promptly.ai).
 
 Authentication is handled via **Bearer tokens** in the `Authorization` header:
 
 Authorization: Bearer YOUR_API_KEY
-
 
 Example using `curl`:
 
@@ -34,6 +54,11 @@ curl -X POST "https://api.promptly.ai/v1/text/generate" \
     "prompt": "Write a motivational quote about innovation."
   }'
 ```
+### Authentication Flow
+
+For a visual of how API key validation works:
+
+{! diagrams/auth-flow.mmd !}
 
 ## Next Steps
 

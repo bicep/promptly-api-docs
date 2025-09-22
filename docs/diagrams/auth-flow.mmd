@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant U as User
+    participant A as Promptly API
+    participant S as Auth Server
+
+    U->>A: Send API Key
+    A->>S: Validate API Key
+    S-->>A: Validation Result (200 OK / 401 Unauthorized)
+    A-->>U: Response

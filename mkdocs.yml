@@ -5,6 +5,10 @@ theme:
   palette:
     primary: 'indigo'
     accent: 'indigo'
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - mermaid 
 nav:
   - Home: index.md
   - Quickstart: quickstart.md
@@ -19,5 +23,19 @@ markdown_extensions:
   - codehilite
   - toc:
       permalink: true
+  - attr_list
+  - def_list
+  - pymdownx.superfences
+  - pymdownx.extra:
+      pymdownx.superfences:
+        custom_fences:
+          - name: mermaid       # 🟨 Recognize ```mermaid blocks
+            class: mermaid      # 🟨 Add proper CSS class
+            format: !!python/name:pymdownx.superfences.fence_code_format  # 🟨 Use default formatter
+
+  - pymdownx.snippets
+  - pymdownx.tabbed
+  - pymdownx.details
 plugins:
   - search
+  - mermaid2
